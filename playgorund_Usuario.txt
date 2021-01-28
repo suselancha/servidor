@@ -1,0 +1,81 @@
+1- NUEVO USUARIO
+
+mutation nuevoUsuario($input: UsuarioInput) {
+  nuevoUsuario(input: $input) {
+    id
+    nombre
+    apellido
+    correo
+    clave
+    nombreUsuario
+    rol
+    
+  }
+}
+
+{
+  "input": {
+  	"nombre": "Alfredo",
+    "apellido": "MAMANI",
+    "correo": "DEMOdddO@gmail.com",
+    "clave": "12345",
+    "nombreUsuario": "suselancha"
+	}
+}
+
+2- AUTENTICAR USUARIO
+
+mutation autenticarUsuario($input: AutenticarInput) {
+  autenticarUsuario(input: $input) {
+    token
+  }
+}
+
+{
+  "input": {
+    "correo": "demo@gmail.com",
+    "clave": "12345"
+    
+  }
+}
+
+3- OBTENER USUARIO
+
+query obtenerUsuario($id: ID, $nombreUsuario: String) {
+  obtenerUsuario(id: $id, nombreUsuario: $nombreUsuario) {
+    id
+    nombre
+    apellido
+    nombreUsuario
+    correo
+    avatar
+    rol
+    activo
+    descripcion
+    sitioWeb
+  }
+}
+
+{
+  "id": "",
+  "nombreUsuario": "suselancha"
+}
+
+
+4-OBTENER TODOS LOS USUARIOS
+
+query obtenerUsuarios {
+  obtenerUsuarios {
+    id
+    nombre
+    apellido
+    email
+    creado
+  }
+}
+
+5- ACTUALIZAR AVATAR
+
+El Playground NO tiene para subir imagenes
+Probar directamente desde el cliente
+
