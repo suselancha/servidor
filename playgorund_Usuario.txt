@@ -79,3 +79,18 @@ query obtenerUsuarios {
 El Playground NO tiene para subir imagenes
 Probar directamente desde el cliente
 
+mutation actualizarAvatar($file: Upload) {
+  actualizarAvatar(file: $file) {
+    estado,
+    urlAvatar
+  }
+}
+// Probar si valida el Token
+// Dejar en el controller solamente console.log(ctx);
+// De lo contrario, probar desde el cliente con carga de imagen
+{
+  "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMGM4OWFlZDQ2NjkxMWQyMDFjNDAyNyIsIm5vbWJyZSI6ImFsZnJlZG8iLCJjb3JyZW8iOiJkZW1vQGdtYWlsLmNvbSIsIm5vbWJyZVVzdWFyaW8iOiJzdXNlbGFuY2hhIiwicm9sIjoiSU5WSVRBRE8iLCJpYXQiOjE2MTIyNzM5NzUsImV4cCI6MTYxMjM2MDM3NX0.A82fEmeXxO5wEuMlyLltadFA_h29_JjX8YFn137Sq4g"
+}
+
+REFERENICIAS
+https://medium.com/@enespalaz/file-upload-with-graphql-9a4927775ef7

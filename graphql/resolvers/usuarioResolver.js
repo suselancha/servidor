@@ -11,7 +11,7 @@ const resolvers = {
     Mutation: {
         nuevoUsuario: (_, { input }) => usuarioController.nuevoUsuario(input),
         autenticarUsuario: (_, { input }) => usuarioController.autenticarUsuario(input),
-        actualizarAvatar: (_, { file }) => usuarioController.actualizarAvatar(file),
+        actualizarAvatar: (_, { file }, ctx) => usuarioController.actualizarAvatar(file, ctx),
     }
 }
 

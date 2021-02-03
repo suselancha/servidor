@@ -2,6 +2,9 @@ const Usuario = require('../models/Usuario');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: '.env' });
+const subirImagen = require('../utils/subir-imagen');
+const fs = require('fs');
+const path = require('path');
 
 function createToken(usuario, SECRET_KEY, expiresIn) {
     const {id, nombre, correo, nombreUsuario, rol } = usuario;
@@ -89,9 +92,32 @@ async function obtenerUsuario(id, nombreUsuario) {
     return usuario;
 }
 
-async function actualizarAvatar(file) {
-    console.log(file);
-    return null;
+async function actualizarAvatar(file, ctx) {
+    //console.log(ctx);
+    const { id } = ctx.usuario;
+    //console.log(file);
+    const { createReadStream, mimetype} = await file;
+    const extension = mimetype.split("/")[1];
+    //console.log(extension);
+    const filename = `${id}.${extension}`;
+    //console.log(imageName);
+    const fileStream = createReadStream()
+    //console.log(fileStream);
+
+    try {
+        const resultado = fileStream.pipe(fs.createWriteStream(`./uploads/avatar/${filename}`));
+        return {
+            estado: true,
+            urlAvatar: resultado.path
+        };
+    } catch (error) {
+        return {
+            estado: false,
+            urlAvatar: null
+        };
+    }
+    
+    //return null;
 }
 
 module.exports = {
