@@ -12,6 +12,7 @@ const resolvers = {
         nuevoUsuario: (_, { input }) => usuarioController.nuevoUsuario(input),
         autenticarUsuario: (_, { input }) => usuarioController.autenticarUsuario(input),
         actualizarAvatar: (_, { file }, ctx) => usuarioController.actualizarAvatar(file, ctx),
+        eliminarAvatar: (_, {}, ctx) => usuarioController.eliminarAvatar(ctx),
     }
 }
 

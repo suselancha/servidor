@@ -56,6 +56,7 @@ const typeDefs = gql`
         nuevoUsuario(input: UsuarioInput):  Usuario
         autenticarUsuario(input: AutenticarInput): Token
         actualizarAvatar(file: Upload): ActualizarAvatar
+        eliminarAvatar: Boolean
     }
 `;
 

@@ -2,7 +2,6 @@ const Usuario = require('../models/Usuario');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: '.env' });
-const subirImagen = require('../utils/subir-imagen');
 const fs = require('fs');
 const path = require('path');
 
@@ -100,15 +99,19 @@ async function actualizarAvatar(file, ctx) {
     const extension = mimetype.split("/")[1];
     //console.log(extension);
     const filename = `${id}.${extension}`;
-    //console.log(imageName);
-    const fileStream = createReadStream()
+    //console.log(filename);
+    const fileStream = createReadStream();
     //console.log(fileStream);
-
+    const pathName = path.join(`./public/avatar/${filename}`);
+    
     try {
-        const resultado = fileStream.pipe(fs.createWriteStream(`./uploads/avatar/${filename}`));
+        //const resultado = await fileStream.pipe(fs.createWriteStream(`./uploads/avatar/${filename}`));
+        const resultado = await fileStream.pipe(fs.createWriteStream(pathName));
+        //console.log(resultado);
+        await Usuario.findByIdAndUpdate(id, { avatar: process.env.BASE_PATH +  `avatar/${filename}` });
         return {
             estado: true,
-            urlAvatar: resultado.path
+            urlAvatar: process.env.BASE_PATH +  `avatar/${filename}`
         };
     } catch (error) {
         return {
@@ -120,9 +123,23 @@ async function actualizarAvatar(file, ctx) {
     //return null;
 }
 
+async function eliminarAvatar(ctx) {
+    const { id } = ctx.usuario;
+
+    try {
+        await Usuario.findByIdAndUpdate(id, {avatar: ''});
+        return true;
+    } catch (error) {
+        console.log(error);
+        return false;
+    }
+}
+
+
 module.exports = {
     nuevoUsuario,
     autenticarUsuario,
     obtenerUsuario,
-    actualizarAvatar
+    actualizarAvatar,
+    eliminarAvatar
 }

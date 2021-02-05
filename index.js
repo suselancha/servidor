@@ -1,5 +1,7 @@
 // Servidor Apollo
-const { ApolloServer } = require('apollo-server');
+const { ApolloServer } = require('apollo-server-express');
+const express = require('express');
+const cors = require('cors');
 // Schema
 const typeDefs = require('./graphql/types');
 // Resolvers
@@ -41,9 +43,16 @@ const server = new ApolloServer({
     }
 });
 
+const app = express();
+server.applyMiddleware({app});
+app.use(express.static('public'));
+app.use(cors());
 
 // Arrancar el servidor
-server.listen().then( ({url}) => {
+/*server.listen().then( ({url}) => {
     console.log(`Servidor listo en la URL ${url}`)
-})
+})*/
 
+app.listen({ port:4000}, () => {
+    console.log(`Servidor listo en htpp://localhost:4000`);
+})

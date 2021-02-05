@@ -94,3 +94,13 @@ mutation actualizarAvatar($file: Upload) {
 
 REFERENICIAS
 https://medium.com/@enespalaz/file-upload-with-graphql-9a4927775ef7
+
+6- ELIMINAR AVATAR
+
+mutation eliminarAvatar {
+  eliminarAvatar
+}
+
+{
+  "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMGM4OWFlZDQ2NjkxMWQyMDFjNDAyNyIsIm5vbWJyZSI6ImFsZnJlZG8iLCJjb3JyZW8iOiJkZW1vQGdtYWlsLmNvbSIsIm5vbWJyZVVzdWFyaW8iOiJzdXNlbGFuY2hhIiwicm9sIjoiSU5WSVRBRE8iLCJpYXQiOjE2MTIyNzM5NzUsImV4cCI6MTYxMjM2MDM3NX0.A82fEmeXxO5wEuMlyLltadFA_h29_JjX8YFn137Sq4g"
+}
