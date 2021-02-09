@@ -1,0 +1,53 @@
+1- NUEVO cliente
+
+mutation nuevoCliente($input: ClienteInput) {
+  nuevoCliente(input: $input) {
+    nombre
+    apellido
+  }
+}
+
+{
+  "input": {
+    "nombre": "Alfredo",
+    "apellido": "Mamani",
+    "empresa": "TuWebJujuy",
+    "email": "demo@demo.com.ar"
+  }
+}
+
+{
+  "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMGM4OWFlZDQ2NjkxMWQyMDFjNDAyNyIsIm5vbWJyZSI6ImFsZnJlZG8iLCJjb3JyZW8iOiJkZW1vQGdtYWlsLmNvbSIsIm5vbWJyZVVzdWFyaW8iOiJzdXNlbGFuY2hhIiwicm9sIjoiSU5WSVRBRE8iLCJpYXQiOjE2MTI4MjM2NTEsImV4cCI6MTYxMjkxMDA1MX0.1j2qcPOj3Qkmgr1nK20xYGU-WLYKq64BBQ-N6ONiiUI"
+}
+
+2- OBTENER CLIENTES
+
+query obtenerClientes {
+  obtenerClientes {
+    nombre
+    apellido
+    empresa
+    email
+    telefono
+    vendedor
+  }
+}
+
+3- OBTENER CLIENTES X vendedor
+
+query obtenerClientesVendedor {
+  obtenerClientesVendedor {
+    nombre
+    apellido
+    empresa
+    email
+    vendedor
+  }
+}
+
+{
+  "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwMGM4OWFlZDQ2NjkxMWQyMDFjNDAyNyIsIm5vbWJyZSI6ImFsZnJlZG8iLCJjb3JyZW8iOiJkZW1vQGdtYWlsLmNvbSIsIm5vbWJyZVVzdWFyaW8iOiJzdXNlbGFuY2hhIiwicm9sIjoiSU5WSVRBRE8iLCJpYXQiOjE2MTI4MzkxNDksImV4cCI6MTYxMjkyNTU0OX0.3RXEHaZZi7Il06gS41ZZWRjjjptWuwT0ldjlnKU-am0"
+}
+
+
+

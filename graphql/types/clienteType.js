@@ -23,8 +23,8 @@ const typeDefs = gql`
 
     type Query {
         obtenerClientes: [Cliente]
-        obtenerCliente(id: ID!): Cliente
         obtenerClientesVendedor: [Cliente]
+        obtenerCliente(id: ID!): Cliente
     }
 
     type Mutation {
